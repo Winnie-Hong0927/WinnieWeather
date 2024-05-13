@@ -89,10 +89,5 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         return person;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mHelper.closeDB();
-    }
 
 }

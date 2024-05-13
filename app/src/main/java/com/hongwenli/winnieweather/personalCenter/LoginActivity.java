@@ -69,9 +69,4 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mHelper.closeDB();
-    }
 }

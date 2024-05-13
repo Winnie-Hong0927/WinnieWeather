@@ -4,6 +4,7 @@ import com.baidu.location.LocationClient;
 import com.hongwenli.library.BaseApplication;
 import com.hongwenli.library.network.api.NetworkApi;
 import com.hongwenli.winnieweather.db.AppDatabase;
+import com.hongwenli.winnieweather.personalCenter.db.DatabaseHelper;
 import com.hongwenli.winnieweather.utils.MVUtils;
 import com.tencent.mmkv.MMKV;
 
@@ -29,6 +30,13 @@ public class WeatherApp extends BaseApplication {
 
     public static AppDatabase getDb() {
         return db;
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        DatabaseHelper helper = DatabaseHelper.getInstance(this);
+        helper.closeDB();
     }
 }
 
