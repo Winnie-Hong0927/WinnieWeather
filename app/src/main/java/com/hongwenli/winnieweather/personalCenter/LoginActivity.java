@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.hongwenli.winnieweather.R;
 import com.hongwenli.winnieweather.personalCenter.db.DatabaseHelper;
+import com.hongwenli.winnieweather.ui.MainActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -51,6 +52,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             boolean exists = mHelper.checkUserExists(etUsername.getText().toString(), etPsw.getText().toString());
             if(exists){
                 //跳转到主界面
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
                 Toast.makeText(this,"跳转到主界面",Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(this,"用户名或密码错误",Toast.LENGTH_SHORT).show();
