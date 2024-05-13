@@ -37,7 +37,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@color/white"
-            android:layout_margin="5dp">
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="25dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -58,7 +59,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@color/white"
-            android:layout_margin="5dp">
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="25dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -79,7 +81,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@color/white"
-            android:layout_margin="5dp">
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="25dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -100,7 +103,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@color/white"
-            android:layout_margin="5dp">
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="25dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -121,7 +125,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@color/white"
-            android:layout_margin="5dp">
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="25dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -147,7 +152,8 @@
             android:id="@+id/btn_change"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="25dp"
             android:text="切换账号"
             android:textSize="30dp"
             android:background="@color/btn_unClicked"
@@ -156,7 +162,8 @@
             android:id="@+id/btn_exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="25dp"
             android:text="退出登录"
             android:textSize="30dp"
             android:background="@color/btn_unClicked"

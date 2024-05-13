@@ -115,7 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // 打印数据库中所有数据
-    public void printAllUsers() {
+    public List<Person> getAllUsers() {
         List<Person> list = new ArrayList<>();
         Cursor cursor = mRDB.query(TABLE_NAME,null,"1=1",null,null,null,null);
         while (cursor.moveToNext()){
@@ -133,9 +133,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             person = new Person(username,name,age,desc,password);
             list.add(person);
         }
-        for (Person person : list) {
-            System.out.println(person);
-        }
+        return list;
     }
 
     public void closeDB(){

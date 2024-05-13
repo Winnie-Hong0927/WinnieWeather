@@ -58,6 +58,12 @@ public class PersonActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
+        int id = v.getId();
+        if(id == R.id.btn_change){
+            Intent intent = new Intent(PersonActivity.this, AllPersonActivity.class);
+            startActivity(intent);
+        }else if(id == R.id.btn_exit){
 
+        }
     }
 }
