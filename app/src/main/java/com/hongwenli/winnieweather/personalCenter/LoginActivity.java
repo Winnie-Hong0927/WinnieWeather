@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.hongwenli.winnieweather.R;
+import com.hongwenli.winnieweather.personalCenter.bean.Person;
 import com.hongwenli.winnieweather.personalCenter.db.DatabaseHelper;
 import com.hongwenli.winnieweather.ui.MainActivity;
 
@@ -51,8 +52,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             //判断是否存在该用户，如果存在就跳转到主界面，否则就提示用户先去注册
             boolean exists = mHelper.checkUserExists(etUsername.getText().toString(), etPsw.getText().toString());
             if(exists){
-                //跳转到主界面
+                //跳转到主界面//需要携带着这个用户
+                Person loginedPerson = mHelper.getPersonByUsername(etUsername.getText().toString());
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra(Person.USERNAME,loginedPerson.getUsername());
+                intent.putExtra(Person.PASSWORD,loginedPerson.getPassword());
+                intent.putExtra(Person.NAME,loginedPerson.getName());
+                intent.putExtra(Person.AGE,loginedPerson.getAge());
+                intent.putExtra(Person.DESC,loginedPerson.getDesc());
                 startActivity(intent);
                 Toast.makeText(this,"跳转到主界面",Toast.LENGTH_SHORT).show();
             }else{

@@ -26,4 +26,6 @@
     <color name="btn_clicked">#1781b5</color>
     <color name="btn_unClicked">#2983bb</color>
     <color name="desc_color">#434548</color>
+    <color name="logo_background">#aad5ff</color>
+    <color name="text_color">#b5aa90</color>
 </resources>

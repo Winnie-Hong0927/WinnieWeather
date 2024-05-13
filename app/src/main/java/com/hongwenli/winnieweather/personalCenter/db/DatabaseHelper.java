@@ -165,4 +165,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         mRDB.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         System.out.println("删除表");
     }
+
+    public Person getPersonByUsername(String username){
+        List<Person> list = new ArrayList<>();
+        Cursor cursor = mRDB.query(TABLE_NAME,null,"username=?",new String[]{username},null,null,null);
+        while (cursor.moveToNext()){
+            Person person;
+            int pswIndex = cursor.getColumnIndex(COLUMN_PASSWORD);
+            String password = cursor.getString(pswIndex);
+            int nameIndex = cursor.getColumnIndex(COLUMN_NAME);
+            String name = cursor.getString(nameIndex);
+            int ageIndex = cursor.getColumnIndex(COLUMN_AGE);
+            int age = cursor.getInt(ageIndex);
+            int descIndex = cursor.getColumnIndex(COLUMN_DESC);
+            String desc = cursor.getString(descIndex);
+            person = new Person(username,name,age,desc,password);
+            list.add(person);
+        }
+        return list.get(0);
+    }
 }

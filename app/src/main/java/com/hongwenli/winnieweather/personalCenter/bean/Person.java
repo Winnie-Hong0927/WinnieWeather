@@ -6,6 +6,12 @@ public class Person {
     private int age;
     private String desc;
     private String password;
+    public static final String USERNAME = "username";
+    public static final String PASSWORD = "password";
+    public static final String NAME = "name";
+    public static final String AGE = "age";
+    public static final String DESC = "desc";
+
     public Person(){}
     public Person(String username, String name, int age, String desc) {
         this.username = username;

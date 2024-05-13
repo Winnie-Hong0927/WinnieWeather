@@ -22,6 +22,9 @@
         android:theme="@style/Theme.WinnieWeather"
         tools:targetApi="31">
         <activity
+            android:name=".personalCenter.PersonActivity"
+            android:exported="false" />
+        <activity
             android:name=".personalCenter.RegisterActivity"
             android:exported="false" />
         <activity
