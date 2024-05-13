@@ -133,6 +133,12 @@ public class MainActivity extends NetworkActivity<ActivityMainBinding>
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loginedPerson = LoginedPerson.getLoginedPerson();
+    }
+
     /**
      * 初始化
      */
