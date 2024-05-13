@@ -34,6 +34,7 @@ import com.hongwenli.winnieweather.bean.HourlyResponse;
 import com.hongwenli.winnieweather.databinding.DialogDailyDetailBinding;
 import com.hongwenli.winnieweather.databinding.DialogHourlyDetailBinding;
 import com.hongwenli.winnieweather.location.GoodLocation;
+import com.hongwenli.winnieweather.music.MusicActivity;
 import com.hongwenli.winnieweather.personalCenter.LoginActivity;
 import com.hongwenli.winnieweather.personalCenter.PersonActivity;
 import com.hongwenli.winnieweather.personalCenter.bean.LoginedPerson;
@@ -457,10 +458,13 @@ public class MainActivity extends NetworkActivity<ActivityMainBinding>
             //跳转页面
             jumpActivityIntent.launch(new Intent(mContext, ManageCityActivity.class));
         }else if(itemId==R.id.item_music){//播放音乐
-
+//            jumpActivityIntent.launch(new Intent(mContext, MusicActivity.class));
+            Intent musicIntent = new Intent(mContext, MusicActivity.class);
+            startActivity(musicIntent);
         }else if(itemId==R.id.item_person){//个人中心
-            Intent personIntent = new Intent(mContext, PersonActivity.class);
-            startActivity(personIntent);
+//            Intent personIntent = new Intent(mContext, PersonActivity.class);
+//            startActivity(personIntent);
+            jumpActivityIntent.launch(new Intent(mContext, PersonActivity.class));
         }
         return true;
     }

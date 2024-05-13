@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 LoginedPerson.setLoginedPerson(person);
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
-                Toast.makeText(this,"跳转到主界面",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this,"跳转到主界面",Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(this,"用户名或密码错误",Toast.LENGTH_SHORT).show();
             }
