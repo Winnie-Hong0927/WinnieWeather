@@ -14,7 +14,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.hongwenli.winnieweather.R;
+import com.hongwenli.winnieweather.personalCenter.bean.LoginedPerson;
 import com.hongwenli.winnieweather.personalCenter.bean.Person;
+import com.hongwenli.winnieweather.utils.ToastUtils;
 
 public class PersonActivity extends AppCompatActivity implements View.OnClickListener {
     private Person loginedPerson;
@@ -31,14 +33,11 @@ public class PersonActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_person);
-        Intent intent = getIntent();
-        String username = intent.getStringExtra(Person.USERNAME);
-        String password = intent.getStringExtra(Person.PASSWORD);
-        String name = intent.getStringExtra(Person.NAME);
-        String desc = intent.getStringExtra(Person.DESC);
-        int age = intent.getIntExtra(Person.AGE,0);
-        loginedPerson = new Person(username,name,age,desc,password);
-
+        loginedPerson = LoginedPerson.getLoginedPerson();
+        if(loginedPerson.getUsername()==null){
+            ToastUtils.showShortToast(this,"未登录，请先登录");
+            startActivity(new Intent(PersonActivity.this,LoginActivity.class));
+        }
         tvUsername = findViewById(R.id.tv_username);
         tvPassword = findViewById(R.id.tv_password);
         tvAge = findViewById(R.id.tv_age);
@@ -47,11 +46,13 @@ public class PersonActivity extends AppCompatActivity implements View.OnClickLis
         btnExit = findViewById(R.id.btn_exit);
         btnChange = findViewById(R.id.btn_change);
 
-        tvUsername.setText(username);
-        tvDesc.setText(desc);
-        tvPassword.setText(password);
-//        tvAge.setText(age);
-        tvName.setText(name);
+        tvUsername.setText(loginedPerson.getUsername());
+        tvDesc.setText(loginedPerson.getDesc());
+        tvPassword.setText(loginedPerson.getPassword());
+        int age = loginedPerson.getAge();
+        String ageStr = age+"";
+        tvAge.setText(ageStr);
+        tvName.setText(loginedPerson.getName());
         btnChange.setOnClickListener(this);
         btnExit.setOnClickListener(this);
     }

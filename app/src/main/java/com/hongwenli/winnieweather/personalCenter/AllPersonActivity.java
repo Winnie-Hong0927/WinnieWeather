@@ -31,5 +31,6 @@ public class AllPersonActivity extends AppCompatActivity implements AdapterView.
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ToastUtils.showShortToast(this,"点击了"+position);
+
     }
 }

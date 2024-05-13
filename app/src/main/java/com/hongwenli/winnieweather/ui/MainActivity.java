@@ -34,7 +34,9 @@ import com.hongwenli.winnieweather.bean.HourlyResponse;
 import com.hongwenli.winnieweather.databinding.DialogDailyDetailBinding;
 import com.hongwenli.winnieweather.databinding.DialogHourlyDetailBinding;
 import com.hongwenli.winnieweather.location.GoodLocation;
+import com.hongwenli.winnieweather.personalCenter.LoginActivity;
 import com.hongwenli.winnieweather.personalCenter.PersonActivity;
+import com.hongwenli.winnieweather.personalCenter.bean.LoginedPerson;
 import com.hongwenli.winnieweather.personalCenter.bean.Person;
 import com.hongwenli.winnieweather.ui.adapter.DailyAdapter;
 import com.hongwenli.winnieweather.ui.adapter.HourlyAdapter;
@@ -154,13 +156,11 @@ public class MainActivity extends NetworkActivity<ActivityMainBinding>
         tvMoreDaily.setOnClickListener(v -> {
            goToMore(MoreDailyActivity.class);
         });
-        Intent intent = getIntent();
-        String username = intent.getStringExtra(Person.USERNAME);
-        String password = intent.getStringExtra(Person.PASSWORD);
-        String name = intent.getStringExtra(Person.NAME);
-        String desc = intent.getStringExtra(Person.DESC);
-        int age = intent.getIntExtra(Person.AGE,0);
-        loginedPerson = new Person(username,name,age,desc,password);
+        loginedPerson = LoginedPerson.getLoginedPerson();
+        if(loginedPerson.getUsername()==null){
+            ToastUtils.showShortToast(this,"未登录，请先登录");
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
     }
     private String  locationId;
     /**
@@ -454,12 +454,6 @@ public class MainActivity extends NetworkActivity<ActivityMainBinding>
 
         }else if(itemId==R.id.item_person){//个人中心
             Intent personIntent = new Intent(mContext, PersonActivity.class);
-            personIntent.putExtra(Person.USERNAME,loginedPerson.getUsername());
-            personIntent.putExtra(Person.PASSWORD,loginedPerson.getPassword());
-            personIntent.putExtra(Person.NAME,loginedPerson.getName());
-            personIntent.putExtra(Person.AGE,loginedPerson.getAge());
-            personIntent.putExtra(Person.DESC,loginedPerson.getDesc());
-//            jumpActivityIntent.launch(personIntent);
             startActivity(personIntent);
         }
         return true;
