@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.WinnieWeather" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.WinnieWeather" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+<!--      原始的主题  Theme.Material3.DayNight.NoActionBar-->
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 <!--        管理城市页面的效果我打算做成白色风格的，所以状态栏的文字和图标需要变成深色的，

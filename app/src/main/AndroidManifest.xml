@@ -21,18 +21,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WinnieWeather"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".ui.MoreDailyActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".personalCenter.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".personalCenter.LoginActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".ui.MoreDailyActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".ui.MoreDailyActivity"
-            android:parentActivityName=".ui.MainActivity"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity" />
         </activity>
-
         <activity
             android:name=".ui.ManageCityActivity"
             android:exported="false" />

@@ -22,4 +22,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="background">#63bbd0</color>
+    <color name="btn_clicked">#1781b5</color>
+    <color name="btn_unClicked">#2983bb</color>
+    <color name="desc_color">#434548</color>
 </resources>
