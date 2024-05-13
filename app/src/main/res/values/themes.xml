@@ -1,0 +1,45 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.WinnieWeather" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<!--        管理城市页面的效果我打算做成白色风格的，所以状态栏的文字和图标需要变成深色的，
+那么为了这么做，我们需要改一下主题中的设置-->
+<!--        Primary brand color.-->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
+<!--        Secondary brand color-->
+        <item name="colorSecondary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/black</item>
+        <item name="colorOnSecondary">@color/black</item>
+<!--        Status bar color-->
+<!--        <item name="anroid:statusBarColor">?arrt</item>-->
+    </style>
+
+    <style name="Theme.WinnieWeather" parent="Base.Theme.WinnieWeather" />
+    <!--圆环进度条-->
+<!--    用于展示空气质量-->
+    <declare-styleable name="RoundProgressBar">
+        <attr name="round_max_progress" format="float" />
+        <attr name="round_bg_color" format="color" />
+        <attr name="round_stroke_width" format="dimension" />
+        <attr name="round_progress" format="float" />
+        <attr name="round_progress_color" format="color" />
+        <attr name="round_first_text" format="string" />
+        <attr name="round_first_text_color" format="color" />
+        <attr name="round_first_text_size" format="dimension" />
+        <attr name="round_second_text" format="string" />
+        <attr name="round_second_text_color" format="color" />
+        <attr name="round_second_text_size" format="dimension" />
+        <attr name="round_min_text" format="string" />
+        <attr name="round_min_text_color" format="color" />
+        <attr name="round_min_text_size" format="dimension" />
+        <attr name="round_max_text" format="string" />
+        <attr name="round_max_text_color" format="color" />
+        <attr name="round_max_text_size" format="dimension" />
+        <attr name="round_angle_size" format="float" />
+        <attr name="round_start_angle" format="float" />
+    </declare-styleable>
+
+</resources>
