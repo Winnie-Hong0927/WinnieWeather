@@ -77,9 +77,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         return res;
     }
 
-    //其实可以再加上点对用户输入的判断
     private Person createPerson(){
-//        用户名必须唯一
         String username = etUsername.getText().toString();
         String name = etName.getText().toString();
         int age = Integer.parseInt(etAge.getText().toString());

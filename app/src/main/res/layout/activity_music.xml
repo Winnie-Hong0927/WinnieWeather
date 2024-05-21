@@ -21,38 +21,6 @@
             android:src="@drawable/logo"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
-        <!--播放本地音乐-->
-        <Button
-            android:id="@+id/btn_local"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="播放网络音乐"
-            android:textColor="@color/white"
-            android:background="@color/btn_unClicked"
-            />
-        <View
-            android:layout_width="20dp"
-            android:layout_height="match_parent"/>
-        <!--        播放网络音乐-->
-        <Button
-            android:id="@+id/btn_network"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="播放本地音乐"
-            android:textColor="@color/white"
-            android:background="@color/btn_unClicked"/>
-    </LinearLayout>
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"

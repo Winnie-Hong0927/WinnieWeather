@@ -15,7 +15,6 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "user_db";
     private static final int DATABASE_VERSION = 1;
-
     // 表格名称和列名
     public static final String TABLE_NAME = "users";
     public static final String COLUMN_ID = "_id";
@@ -27,7 +26,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper databaseHelper;
     public static SQLiteDatabase mRDB;//读
     public static SQLiteDatabase mWDB;//写
-
     // 创建表格的 SQL 语句
     private static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
@@ -42,7 +40,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
     //    使用单例模式
     public static DatabaseHelper getInstance(Context context){
         if(databaseHelper==null){
@@ -50,37 +47,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return databaseHelper;
     }
-
     public SQLiteDatabase openReadLink( ){
         if(mRDB==null||!mRDB.isOpen()){
             mRDB = databaseHelper.getReadableDatabase();
         }
         return mRDB;
     }
-
     public SQLiteDatabase openWriteLink(){
         if(mWDB==null||!mWDB.isOpen()){
             mWDB = databaseHelper.getWritableDatabase();
         }
         return mWDB;
     }
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_TABLE);
-        Log.d("TAG", "onCreate: 创建新表成功~~~");
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // 升级数据库版本时的操作，这里简单示例，直接删除旧表格并创建新表格
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(db);
-    }
-
     // 查询指定用户名是否存在于数据库中
     public boolean checkUserExists(String username) {
         boolean exists = false;
-        Cursor cursor = mRDB.query(TABLE_NAME,null,"username=?",new String[]{username},null,null,null);
+        Cursor cursor = mRDB.query(TABLE_NAME,null,"username=?",
+                new String[]{username},null,null,null);
         if(cursor.moveToNext()){
             exists = true;
         }
@@ -95,7 +78,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return exists;
     }
-
     // 添加用户到数据库
     public long insert(Person person) {
         long id = -1;
@@ -113,12 +95,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         mWDB.insert(TABLE_NAME,null,values);
         return id;
     }
-
     // 打印数据库中所有数据
     public List<Person> getAllUsers() {
         List<Person> list = new ArrayList<>();
-        Cursor cursor = mRDB.query(TABLE_NAME,null,"1=1",null,null,null,null);
-        while (cursor.moveToNext()){
+        Cursor cursor = mRDB.query(TABLE_NAME, null, "1=1", null,
+                null, null, null);
+        while (cursor.moveToNext()) {
             Person person;
             int usernameIndex = cursor.getColumnIndex(COLUMN_USERNAME);
             String username = cursor.getString(usernameIndex);
@@ -130,43 +112,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int age = cursor.getInt(ageIndex);
             int descIndex = cursor.getColumnIndex(COLUMN_DESC);
             String desc = cursor.getString(descIndex);
-            person = new Person(username,name,age,desc,password);
+            person = new Person(username, name, age, desc, password);
             list.add(person);
         }
         return list;
     }
-
-    public void closeDB(){
-        if(mRDB!=null&& mRDB.isOpen()) mRDB.close();
-        if(mWDB!=null&& mWDB.isOpen()) mWDB.close();
-        mRDB = null;
-        mWDB = null;
-    }
-
-    public List<String> getColumnNames() {
-        List<String> columnNames = new ArrayList<>();
-        Cursor cursor = mRDB.rawQuery("PRAGMA table_info(" + TABLE_NAME + ")", null);
-        if (cursor != null) {
-            try {
-                int nameIndex = cursor.getColumnIndex("name");
-                while (cursor.moveToNext()) {
-                    String columnName = cursor.getString(nameIndex);
-                    columnNames.add(columnName);
-                }
-            } finally {
-                cursor.close();
-            }
-        }
-        return columnNames;
-    }
-    public void dropTable() {
-        mRDB.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        System.out.println("删除表");
-    }
-
     public Person getPersonByUsername(String username){
         List<Person> list = new ArrayList<>();
-        Cursor cursor = mRDB.query(TABLE_NAME,null,"username=?",new String[]{username},null,null,null);
+        Cursor cursor = mRDB.query(TABLE_NAME,null,"username=?",
+                new String[]{username},null,null,null);
         while (cursor.moveToNext()){
             Person person;
             int pswIndex = cursor.getColumnIndex(COLUMN_PASSWORD);
@@ -181,5 +135,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             list.add(person);
         }
         return list.get(0);
+    }
+    /////////////////////
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(CREATE_TABLE);
+    }
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // 升级数据库版本时的操作，这里简单示例，直接删除旧表格并创建新表格
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+    }
+    public void closeDB(){
+        if(mRDB!=null&& mRDB.isOpen()) mRDB.close();
+        if(mWDB!=null&& mWDB.isOpen()) mWDB.close();
+        mRDB = null;
+        mWDB = null;
     }
 }

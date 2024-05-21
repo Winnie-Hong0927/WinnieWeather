@@ -222,8 +222,6 @@
                     android:gravity="center"
                     android:padding="12dp"
                     android:clickable="true"
-                    android:text="更多天气预报"
-                    android:drawableRight="@mipmap/icon_more_blue"
                     android:textColor="@color/blue_more"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rv_daily"/>
@@ -244,7 +242,6 @@
                         android:layout_marginTop="8dp"
                         android:text="空气质量"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/sp_18"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 <!--                        更多天气质量信息-->
@@ -254,9 +251,6 @@
                         android:layout_height="wrap_content"
                         android:drawableRight="@mipmap/icon_more_blue"
                         android:padding="4dp"
-                        android:text="更多"
-                        android:textColor="@color/blue_more"
-                        android:textSize="14sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView3"/>
 
