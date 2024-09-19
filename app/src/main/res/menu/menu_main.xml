@@ -11,10 +11,4 @@
     <item
         android:id="@+id/item_manage_city"
         android:title="管理城市" />
-    <item
-        android:id="@+id/item_music"
-        android:title="播放音乐"/>
-    <item
-        android:id="@+id/item_person"
-        android:title="个人中心"/>
 </menu>

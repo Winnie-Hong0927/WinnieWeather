@@ -28,7 +28,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import com.hongwenli.winnieweather.personalCenter.LoginActivity;
 /**
  * 首先从上面开始，沉浸式、然后viewModel绑定，
  * 检查是否第一次启动，是就读取本地城市数据，保存到数据库中，不是就跳过，
@@ -47,7 +46,7 @@ public class SplashActivity extends NetworkActivity<ActivitySplashBinding> {
         //检查启动
         checkingStartup();
         //准备就绪后跳转到主界面
-        new Handler().postDelayed(() -> jumpActivityFinish(LoginActivity.class), 1000);
+        new Handler().postDelayed(() -> jumpActivityFinish(MainActivity.class), 1000);
     }
 //    检查启动
     private void checkingStartup() {

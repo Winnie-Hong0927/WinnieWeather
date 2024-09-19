@@ -3,16 +3,12 @@ package com.hongwenli.winnieweather.ui;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -34,11 +30,6 @@ import com.hongwenli.winnieweather.bean.HourlyResponse;
 import com.hongwenli.winnieweather.databinding.DialogDailyDetailBinding;
 import com.hongwenli.winnieweather.databinding.DialogHourlyDetailBinding;
 import com.hongwenli.winnieweather.location.GoodLocation;
-import com.hongwenli.winnieweather.music.MusicActivity;
-import com.hongwenli.winnieweather.personalCenter.LoginActivity;
-import com.hongwenli.winnieweather.personalCenter.PersonActivity;
-import com.hongwenli.winnieweather.personalCenter.bean.LoginedPerson;
-import com.hongwenli.winnieweather.personalCenter.bean.Person;
 import com.hongwenli.winnieweather.ui.adapter.DailyAdapter;
 import com.hongwenli.winnieweather.ui.adapter.HourlyAdapter;
 import com.hongwenli.winnieweather.ui.adapter.LifestyleAdapter;
@@ -100,7 +91,6 @@ public class MainActivity extends NetworkActivity<ActivityMainBinding>
 //    private TextView tvMoreDaily = findViewById(R.id.tv_more_daily);//更多天气预报
 //    private TextView tvMoreAir = findViewById(R.id.tv_more_air);//更多空气质量
     private TextView tvMoreDaily;
-    private Person loginedPerson;
     /**
      * 注册意图
      */
@@ -137,7 +127,6 @@ public class MainActivity extends NetworkActivity<ActivityMainBinding>
     @Override
     protected void onResume() {
         super.onResume();
-        loginedPerson = LoginedPerson.getLoginedPerson();
     }
 
     /**
@@ -163,11 +152,6 @@ public class MainActivity extends NetworkActivity<ActivityMainBinding>
         tvMoreDaily.setOnClickListener(v -> {
            goToMore(MoreDailyActivity.class);
         });
-        loginedPerson = LoginedPerson.getLoginedPerson();
-        if(loginedPerson.getUsername()==null){
-            ToastUtils.showShortToast(this,"未登录，请先登录");
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-        }
     }
     private String  locationId;
     /**
@@ -457,14 +441,6 @@ public class MainActivity extends NetworkActivity<ActivityMainBinding>
         }else if(itemId==R.id.item_manage_city){//管理城市
             //跳转页面
             jumpActivityIntent.launch(new Intent(mContext, ManageCityActivity.class));
-        }else if(itemId==R.id.item_music){//播放音乐
-//            jumpActivityIntent.launch(new Intent(mContext, MusicActivity.class));
-            Intent musicIntent = new Intent(mContext, MusicActivity.class);
-            startActivity(musicIntent);
-        }else if(itemId==R.id.item_person){//个人中心
-//            Intent personIntent = new Intent(mContext, PersonActivity.class);
-//            startActivity(personIntent);
-            jumpActivityIntent.launch(new Intent(mContext, PersonActivity.class));
         }
         return true;
     }
